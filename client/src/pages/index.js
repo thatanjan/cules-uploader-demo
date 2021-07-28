@@ -1,6 +1,8 @@
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 
+import Uploader from '../components/Uploader'
+
 export default function Home() {
 	return (
 		<Grid container justifyContent='center'>
@@ -15,7 +17,9 @@ export default function Home() {
 				</Typography>
 			</Grid>
 
-			<Grid item xs={12} md={7}></Grid>
+			<Grid item xs={12} md={7}>
+				<Uploader />{' '}
+			</Grid>
 		</Grid>
 	)
 }
