@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardActions from '@material-ui/core/CardActions'
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
 import PublishIcon from '@material-ui/icons/Publish'
 
@@ -60,7 +61,23 @@ const Uploader = () => {
 				<CardMedia image={previewLink} sx={{ height: 0, paddingTop: '56.25%' }} />
 			)}
 
-			<CardActions> </CardActions>
+			{!previewLink && (
+				<CardActions>
+					<Grid container spacing={5}>
+						<Grid item xs={12} md={6}>
+							<Button fullWidth variant='contained' color='primary'>
+								Upload Image
+							</Button>
+						</Grid>
+
+						<Grid item xs={12} md={6}>
+							<Button fullWidth variant='contained' color='secondary'>
+								Reset
+							</Button>
+						</Grid>
+					</Grid>
+				</CardActions>
+			)}
 		</Card>
 	)
 }
