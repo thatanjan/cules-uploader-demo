@@ -1,4 +1,4 @@
-import CssBaseLine from 'material-ui/core/CssBaseLine'
+import CssBaseLine from '@material-ui/core/CssBaseline'
 import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps }) {
