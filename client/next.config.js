@@ -1,3 +1,8 @@
 module.exports = {
-  reactStrictMode: true,
+	reactStrictMode: true,
+	api: {
+		bodyParser: {
+			sizeLimit: '50mb',
+		},
+	},
 }
