@@ -1,3 +1,4 @@
+import CssBaseLine from 'material-ui/core/CssBaseLine'
 import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps }) {
@@ -7,7 +8,12 @@ function MyApp({ Component, pageProps }) {
 			jssStyles.parentElement.removeChild(jssStyles)
 		}
 	}, [])
-	return <Component {...pageProps} />
+	return (
+		<>
+			<CssBaseLine />
+			<Component {...pageProps} />
+		</>
+	)
 }
 
 export default MyApp
