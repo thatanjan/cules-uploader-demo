@@ -19,6 +19,8 @@ const app = express()
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ limit: '50mb', extended: true }))
 
+const uploadDir = 'cules-uploader/'
+
 app.post('/upload', async ({ body }, res) => {
 	const { src, height, width } = body
 
@@ -27,7 +29,7 @@ app.post('/upload', async ({ body }, res) => {
 		height: height || 720,
 		crop: 'fit',
 		quality: 80,
-		folder: 'cules-uploader/',
+		folder: uploadDir,
 	}
 
 	const upload = await uploadToCloudinary(src, imageConfig)
@@ -35,7 +37,14 @@ app.post('/upload', async ({ body }, res) => {
 	res.json({ success: true, public_id: upload })
 })
 
-app.get('/getAllImages', async (_, res) => {})
+app.get('/getAllImages', async (_, res) => {
+	const images = await cloudinaryV2.api.resources({
+		type: 'upload',
+		prefix: uploadDir,
+	})
+
+	return res.json({ images })
+})
 
 const port = process.env.PORT || 8000
 
