@@ -13,5 +13,10 @@
 	"dependencies": {
 		"cloudinary": "^1.26.2",
 		"express": "^4.17.1"
+	},
+	"scripts": {
+		"dev": "nodemon --exec babel-node src/index.js",
+		"build": "babel  src -d build",
+		"start": "yarn build && node build/index.js"
 	}
 }
