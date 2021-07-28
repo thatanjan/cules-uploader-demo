@@ -10,5 +10,9 @@
     "@babel/preset-env": "^7.14.8",
     "babel-plugin-module-resolver": "^4.1.0",
     "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "cloudinary": "^1.26.2",
+    "express": "^4.17.1"
   }
 }
