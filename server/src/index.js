@@ -1,8 +1,41 @@
 import express from 'express'
+import dotenv from 'dotenv'
+import cloudinary from 'cloudinary'
+
+import uploadToCloudinary from './uploadToCloudinary'
+
+dotenv.config()
+
+const cloudinaryV2 = cloudinary.v2
+
+cloudinaryV2.config({
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
+})
 
 const app = express()
 
-app.get('/hello', (req, res) => res.send('hello world from cules coding'))
+app.use(express.json({ limit: '50mb' }))
+app.use(express.urlencoded({ limit: '50mb', extended: true }))
+
+app.post('/upload', async ({ body }, res) => {
+	const { src, height, width } = body
+
+	const imageConfig = {
+		width: width || 1280,
+		height: height || 720,
+		crop: 'fit',
+		quality: 80,
+		folder: 'cules-uploader/',
+	}
+
+	const upload = await uploadToCloudinary(src, imageConfig)
+
+	res.json({ success: true, public_id: upload })
+})
+
+app.get('/getAllImages', async (_, res) => {})
 
 const port = process.env.PORT || 8000
 
