@@ -29,8 +29,17 @@ const handler = async ({ body, method }, res) => {
 
 		return res.json({ success: true, public_id })
 	} catch (e) {
+		console.log(e)
 		return res.status(400).send({ message: 'Error processing request' })
 	}
 }
 
 export default handler
+
+export const config = {
+	api: {
+		bodyParser: {
+			sizeLimit: '50mb',
+		},
+	},
+}
