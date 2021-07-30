@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useDropzone } from 'react-dropzone'
 import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import CardActions from '@material-ui/core/CardActions'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
@@ -23,14 +21,30 @@ const Uploader = () => {
 	const [failed, setFailed] = useState(false)
 	const [showButtons, setShowButtons] = useState(false)
 
-	const handleReset = () => {}
+	const cancelTokenSource = axios.CancelToken.source()
+
+	useEffect(() => {
+		return () => {
+			cancelTokenSource.cancel()
+		}
+	}, [])
+
+	const handleReset = () => {
+		setBase64File('')
+		setPreviewLink('')
+		setShowButtons(false)
+	}
 
 	const handleUpload = async () => {
 		setUploading(true)
 		try {
-			const { data } = await axios.post('/api/upload', {
-				src: base64File,
-			})
+			const { data } = await axios.post(
+				'/api/upload',
+				{
+					src: base64File,
+				},
+				{ cancelToken: cancelTokenSource.token }
+			)
 
 			if (data) {
 				setUploading(false)

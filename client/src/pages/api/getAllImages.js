@@ -1,6 +1,6 @@
 import cloudinary from 'cloudinary'
 
-import uploadDir from './upload'
+import { uploadDir } from './upload'
 
 const handler = async ({ method }, res) => {
 	try {
@@ -16,11 +16,13 @@ const handler = async ({ method }, res) => {
 		})
 
 		const images = await cloudinaryV2.api.resources({
+			max_results: 100,
 			type: 'upload',
 			prefix: uploadDir,
 		})
 
 		const public_ids = images.resources.map((image) => image.public_id)
+		console.log(images)
 
 		return res.json({ images: public_ids })
 	} catch (e) {
