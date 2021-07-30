@@ -17,7 +17,7 @@ export default function Home() {
 				</Typography>
 			</Grid>
 
-			<Grid item xs={12} md={7}>
+			<Grid item xs={12} sm={10} md={7}>
 				<Uploader />{' '}
 			</Grid>
 		</Grid>
