@@ -17,7 +17,12 @@ const Gallery = () => {
 				<title>Cules Gallery</title>
 			</Head>
 
-			<Grid container justifyContent='center'>
+			<Grid
+				container
+				justifyContent='center'
+				sx={{ maxHeight: '100vh', maxWidth: '100vw', overflowX: 'hidden' }}
+				id='scrollableDiv'
+			>
 				<Grid
 					item
 					xs={7}

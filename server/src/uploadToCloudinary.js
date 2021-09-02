@@ -1,13 +1,10 @@
 import cloudinary from 'cloudinary'
+import { cloudinaryV2 } from './index'
 
 const uploadImage = async (image, options) => {
-	try {
-		const { public_id } = await cloudinary.v2.uploader.upload(image, options)
+	const { public_id } = await cloudinaryV2.uploader.upload(image, options)
 
-		return public_id
-	} catch (err) {
-		return err
-	}
+	return public_id
 }
 
 export default uploadImage

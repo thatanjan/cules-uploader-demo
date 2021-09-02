@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { useDropzone } from 'react-dropzone'
 import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
@@ -10,6 +9,7 @@ import Button from '@material-ui/core/Button'
 
 import PublishIcon from '@material-ui/icons/Publish'
 
+import axios from '../utils/axios'
 import CustomAlert from './CustomAlert'
 
 const Uploader = () => {
@@ -39,7 +39,7 @@ const Uploader = () => {
 		setUploading(true)
 		try {
 			const { data } = await axios.post(
-				'/api/upload',
+				'/upload',
 				{
 					src: base64File,
 				},
