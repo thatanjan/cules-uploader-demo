@@ -43,23 +43,27 @@ app.post('/upload', async ({ body }, res) => {
 })
 
 app.get('/getAllImages', async (req, res) => {
-	const {
-		query: { next },
-	} = req
+	try {
+		const {
+			query: { next },
+		} = req
 
-	const options = {
-		type: 'upload',
-		prefix: uploadDir,
-		max_results: 10,
+		const options = {
+			type: 'upload',
+			prefix: uploadDir,
+			max_results: 10,
+		}
+
+		if (next) options.next_cursor = next
+
+		const { resources, next_cursor } = await cloudinaryV2.api.resources(options)
+
+		const images = resources.map((image) => image.public_id)
+
+		return res.json({ images: images, next: next_cursor || '' })
+	} catch (e) {
+		console.log(e)
 	}
-
-	if (next) options.next_cursor = next
-
-	const { resources, next_cursor } = await cloudinaryV2.api.resources(options)
-
-	const images = resources.map((image) => image.public_id)
-
-	return res.json({ images: images, next: next_cursor || '' })
 })
 
 const port = process.env.PORT || 8000
