@@ -38,6 +38,7 @@ const Gallery = () => {
 			</Backdrop>
 		)
 
+	console.log(images)
 	return (
 		<Grid item xs={11}>
 			<Grid
