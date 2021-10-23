@@ -21,14 +21,6 @@ const Uploader = () => {
 	const [failed, setFailed] = useState(false)
 	const [showButtons, setShowButtons] = useState(false)
 
-	const cancelTokenSource = axios.CancelToken.source()
-
-	useEffect(() => {
-		return () => {
-			cancelTokenSource.cancel()
-		}
-	}, [])
-
 	const handleReset = () => {
 		setBase64File('')
 		setPreviewLink('')
@@ -38,13 +30,9 @@ const Uploader = () => {
 	const handleUpload = async () => {
 		setUploading(true)
 		try {
-			const { data } = await axios.post(
-				'/upload',
-				{
-					src: base64File,
-				},
-				{ cancelToken: cancelTokenSource.token }
-			)
+			const { data } = await axios.post('/upload', {
+				src: base64File,
+			})
 
 			if (data) {
 				setUploading(false)
