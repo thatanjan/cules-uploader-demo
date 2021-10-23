@@ -9,11 +9,15 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@emotion/react": "^11.4.0",
-		"@emotion/server": "latest",
+		"@emotion/cache": "^11.5.0",
+		"@emotion/react": "^11.5.0",
+		"@emotion/server": "^11.4.0",
 		"@emotion/styled": "^11.3.0",
 		"@material-ui/core": "^5.0.0-beta.2",
 		"@material-ui/icons": "^5.0.0-beta.1",
+		"@mui/icons-material": "^5.0.4",
+		"@mui/material": "^5.0.4",
+		"@mui/styles": "^5.0.1",
 		"axios": "^0.21.1",
 		"next": "11.0.1",
 		"react": "17.0.2",
