@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import React from 'react'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
-import Fab from '@material-ui/core/Fab'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import Fab from '@mui/material/Fab'
 import { useRouter } from 'next/router'
 
-import PublishIcon from '@material-ui/icons/Publish'
+import PublishIcon from '@mui/icons-material/Publish'
 
 import ImageGallery from '../components/ImageGallery'
 

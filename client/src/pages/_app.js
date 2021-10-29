@@ -1,19 +1,16 @@
-import CssBaseLine from '@material-ui/core/CssBaseline'
-import { useEffect } from 'react'
+import * as React from 'react'
+import CssBaseline from '@mui/material/CssBaseline'
+import { CacheProvider } from '@emotion/react'
+import createEmotionCache from '../utils/createEmotionCache'
 
-function MyApp({ Component, pageProps }) {
-	useEffect(() => {
-		const jssStyles = document.querySelector('#jss-server-side')
-		if (jssStyles) {
-			jssStyles.parentElement.removeChild(jssStyles)
-		}
-	}, [])
+const clientSideEmotionCache = createEmotionCache()
+
+export default function MyApp(props) {
+	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 	return (
-		<>
-			<CssBaseLine />
+		<CacheProvider value={emotionCache}>
+			<CssBaseline />
 			<Component {...pageProps} />
-		</>
+		</CacheProvider>
 	)
 }
-
-export default MyApp

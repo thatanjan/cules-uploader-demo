@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
-import Fab from '@material-ui/core/Fab'
-import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import Fab from '@mui/material/Fab'
+import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary'
 
 import Uploader from '../components/Uploader'
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import Grid from '@material-ui/core/Grid'
-import Backdrop from '@material-ui/core/Backdrop'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import Grid from '@mui/material/Grid'
+import Backdrop from '@mui/material/Backdrop'
+import CircularProgress from '@mui/material/CircularProgress'
 import Image from 'next/image'
 
 import axios2 from '../utils/axios'
